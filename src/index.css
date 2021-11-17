@@ -1,3 +1,22 @@
+/* stylelint-disable */
+/* eslint-disable */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#root {
+  @apply flex flex-col bg-blue-400 h-screen w-full;
+}
+
+.task-container {
+  @apply flex mx-auto items-start p-10 align-middle justify-between w-full h-full border-2 border-blue-200;
+}
+
+.container {
+  @apply flex mx-auto my-20 items-center align-middle justify-center w-full h-full bg-yellow-200 border-2 border-purple-200;
+}
+
+.btn {
+  @apply px-6 py-3 rounded text-white font-raleway shadow bg-blue-600;
+}

@@ -1,15 +1,16 @@
-import './App.css';
+/* stylelint-disable */
+/* eslint-disable */
 
-function App() {
+import "./App.css";
+import Header from "./components/Header";
+import "./index.css";
+
+const App = () => {
   return (
-    // eslint-disable-next-line react/jsx-no-duplicate-props
-    <div className="App" className="p-6 items-center justify-center">
-      <h1 className="text-blue-400 font-extrabold"> Hello World! </h1>
-      {' '}
-      <p className="tracking-widest"> This is my first React App. </p>
-      {' '}
+    <div className='container'>
+      <Header />
     </div>
   );
-}
+};
 
 export default App;
