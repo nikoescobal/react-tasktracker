@@ -13,7 +13,7 @@ const Header = ({ title }) => {
   return (
     <header className='heading'>
       <div className='sub-heading'>
-        <h1 style={{ color: "navy" }} className='text-3xl'>
+        <h1 id='title' style={{ color: "navy" }} className='text-3xl'>
           {title}
         </h1>
         <Button

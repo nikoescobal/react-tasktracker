@@ -6,7 +6,11 @@
 @tailwind utilities;
 
 #root {
-  @apply bg-blue-300 h-screen p-40;
+  @apply bg-blue-300 h-screen my-auto mx-auto pb-24 pt-28 px-56;
+}
+
+#title {
+  @apply font-raleway font-semibold text-5xl;
 }
 
 .heading {
@@ -18,7 +22,7 @@
 }
 
 .tasks-container {
-  @apply mx-auto p-9 align-middle bg-yellow-200 pb-20 px-10 pt-5 border-b-2 border-l-2 border-r-2 border-purple-200;
+  @apply mx-auto p-9 align-middle bg-yellow-200 h-96 pb-20 px-10 pt-5 border-b-2 border-l-2 border-r-2 border-purple-200;
 }
 
 .btn {
@@ -26,7 +30,7 @@
 }
 
 .task {
-  @apply p-3 text-gray-800 bg-purple-200 my-2;
+  @apply p-3 text-gray-800 bg-gray-100 my-2;
 }
 
 .task-align {
