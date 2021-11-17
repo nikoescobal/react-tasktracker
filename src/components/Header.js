@@ -2,13 +2,14 @@
 /* eslint-disable */
 
 import PropTypes from "prop-types";
-import "../index";
+import "../index.css";
+import Button from "./Button";
 
 const Header = ({ title }) => (
   <div className='container'>
     <div className='task-container'>
       <h1 className='text-3xl'> {title}</h1>
-      <button className='btn'>Add</button>
+      <Button color='steelblue' text='Hello' />
     </div>
   </div>
 );
