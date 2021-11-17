@@ -2,9 +2,12 @@
 /* eslint-disable */
 import { FaTimes } from "react-icons/fa";
 
-const Task = ({ task, onDelete }) => {
+const Task = ({ task, onDelete, onToggle }) => {
   return (
-    <div className='task'>
+    <div
+      className={`task ${task.reminder ? "reminder" : ""}`}
+      onClick={() => onToggle(task.id)}
+    >
       <div className='task-align'>
         <h3>{task.text}</h3>{" "}
         <FaTimes

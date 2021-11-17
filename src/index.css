@@ -6,7 +6,7 @@
 @tailwind utilities;
 
 #root {
-  @apply bg-blue-300 h-screen my-auto mx-auto pb-24 pt-28 px-56;
+  @apply bg-blue-300 h-full my-auto mx-auto pb-32 pt-24 px-56;
 }
 
 #title {
@@ -14,25 +14,53 @@
 }
 
 .heading {
-  @apply bg-yellow-200 border-t-2 border-l-2 border-r-2 border-purple-200;
+  @apply bg-yellow-200 border-t-4 border-l-4 border-r-4 border-blue-400;
 }
 
 .sub-heading {
-  @apply flex justify-between px-10 pt-16 pb-5 w-full border-t-2 border-l-2 border-r-2 border-purple-200;
+  @apply flex justify-between px-10 pt-16 pb-5 w-full;
 }
 
 .tasks-container {
-  @apply mx-auto p-9 align-middle bg-yellow-200 h-96 pb-20 px-10 pt-5 border-b-2 border-l-2 border-r-2 border-purple-200;
+  @apply mx-auto p-9 align-middle bg-yellow-200 h-96 pb-20 px-10 pt-5 border-b-4 border-l-4 border-r-4 border-blue-400;
 }
 
 .btn {
   @apply px-6 py-3 rounded font-raleway shadow;
 }
 
+.btn-submit {
+  @apply px-6 py-3 rounded font-raleway bg-blue-800 text-white shadow;
+}
+
+.input {
+  @apply font-light w-full h-12 p-3 rounded text-lg;
+}
+
+.check {
+  @apply flex justify-between align-middle items-center;
+}
+
 .task {
   @apply p-3 text-gray-800 bg-gray-100 my-2;
 }
 
+.task.reminder {
+  @apply border-l-4 border-green-700;
+}
+
 .task-align {
   @apply flex justify-between;
+}
+
+.add-form {
+  @apply bg-yellow-200 w-full p-10 border-l-4 border-r-4 border-blue-400;
+}
+
+.label {
+  @apply text-2xl py-3 font-semibold text-white block;
+}
+
+.form-control {
+  @apply bg-green-400 rounded w-full mb-6 p-6;
 }

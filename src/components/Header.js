@@ -6,22 +6,13 @@ import "../index.css";
 import Button from "./Button";
 
 const Header = ({ title }) => {
-  const onClick = () => {
-    console.log("click");
-  };
-
   return (
     <header className='heading'>
       <div className='sub-heading'>
         <h1 id='title' style={{ color: "navy" }} className='text-3xl'>
           {title}
         </h1>
-        <Button
-          color='darkturquoise'
-          textColor='mintcream'
-          text='Add'
-          onClick={onClick}
-        />
+        <Button color='darkturquoise' textColor='mintcream' text='Add' />
       </div>
     </header>
   );
