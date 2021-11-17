@@ -5,14 +5,27 @@ import PropTypes from "prop-types";
 import "../index.css";
 import Button from "./Button";
 
-const Header = ({ title }) => (
-  <div className='container'>
-    <div className='task-container'>
-      <h1 className='text-3xl'> {title}</h1>
-      <Button color='steelblue' text='Hello' />
-    </div>
-  </div>
-);
+const Header = ({ title }) => {
+  const onClick = () => {
+    console.log("click");
+  };
+
+  return (
+    <header className='heading'>
+      <div className='sub-heading'>
+        <h1 style={{ color: "navy" }} className='text-3xl'>
+          {title}
+        </h1>
+        <Button
+          color='darkturquoise'
+          textColor='mintcream'
+          text='Add'
+          onClick={onClick}
+        />
+      </div>
+    </header>
+  );
+};
 
 Header.defaultProps = {
   title: "Task Tracker",

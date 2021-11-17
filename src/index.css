@@ -6,17 +6,25 @@
 @tailwind utilities;
 
 #root {
-  @apply flex flex-col bg-blue-400 h-screen w-full;
+  @apply bg-blue-300 h-screen p-40;
 }
 
-.task-container {
-  @apply flex mx-auto items-start p-10 align-middle justify-between w-full h-full border-2 border-blue-200;
+.heading {
+  @apply bg-yellow-200 border-t-2 border-l-2 border-r-2 border-purple-200;
 }
 
-.container {
-  @apply flex mx-auto my-20 items-center align-middle justify-center w-full h-full bg-yellow-200 border-2 border-purple-200;
+.sub-heading {
+  @apply flex justify-between px-10 pt-16 pb-5 w-full border-t-2 border-l-2 border-r-2 border-purple-200;
+}
+
+.tasks-container {
+  @apply mx-auto p-9 align-middle bg-yellow-200 pb-20 px-10 pt-5 border-b-2 border-l-2 border-r-2 border-purple-200;
 }
 
 .btn {
-  @apply px-6 py-3 rounded text-white font-raleway shadow bg-blue-600;
+  @apply px-6 py-3 rounded font-raleway shadow;
+}
+
+.task {
+  @apply py-2 text-gray-900;
 }
