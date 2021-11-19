@@ -5,14 +5,19 @@ import PropTypes from "prop-types";
 import "../index.css";
 import Button from "./Button";
 
-const Header = ({ title }) => {
+const Header = ({ title, onAdd, showAdd }) => {
   return (
     <header className='heading'>
       <div className='sub-heading'>
         <h1 id='title' style={{ color: "navy" }} className='text-3xl'>
           {title}
         </h1>
-        <Button color='darkturquoise' textColor='mintcream' text='Add' />
+        <Button
+          color={showAdd ? "red" : "darkturquoise"}
+          textColor='mintcream'
+          text={showAdd ? "Close" : "Add"}
+          onClick={onAdd}
+        />
       </div>
     </header>
   );

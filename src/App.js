@@ -2,61 +2,105 @@
 /* eslint-disable */
 
 import "./App.css";
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import "./index.css";
 import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
-import { useState } from "react";
+import About from "./components/About";
+
+import { useState, useEffect } from "react";
 
 const App = () => {
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      text: "Walk the dog",
-      day: "Nov 18 at 4:00pm",
-      reminder: true,
-    },
-    {
-      id: 2,
-      text: "Eat some chocolate",
-      day: "Nov 19 at 2:00pm",
-      reminder: true,
-    },
-    {
-      id: 3,
-      text: "Buy cereal",
-      day: "Nov 21 at 1:00pm",
-      reminder: false,
-    },
-  ]);
+  const [showAddTask, setShowAddTask] = useState(false);
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    const getTasks = async() => {
+      const tasksFromServer = await fetchTasks()
+      setTasks(tasksFromServer)
+    }
+
+    getTasks()
+  },[])
+
+  // Fetch tasks
+  const fetchTasks = async() => {
+      const res = await fetch('http://localhost:3001/tasks')
+      const data = await res.json()
+
+      return data
+    }
+
+      // Fetch task
+  const fetchTask = async(id) => {
+      const res = await fetch(`http://localhost:3001/tasks/${id}`)
+      const data = await res.json()
+
+      return data
+    }
+
 
   //  Add Task
-  const addTask = (task) => {
-    const id = Math.floor(Math.random() * 10000 + 1);
-    console.log(id);
-    const newTask = { id, ...task };
-    setTasks([...tasks, newTask]);
+  const addTask = async (task) => {
+    const res = await fetch('http://localhost:3001/tasks', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(task)
+    })
+
+    const data = await res.json()
+    setTasks([...tasks, data])
+    
+    // const id = Math.floor(Math.random() * 10000 + 1);
+    // console.log(id);
+    // const newTask = { id, ...task };
+    // setTasks([...tasks, newTask]);
   };
 
   // Delete Task
-  const deleteTask = (id) => {
+  const deleteTask = async (id) => {
+    await fetch(`http://localhost:3001/tasks/${id}`, {
+      method: 'DELETE'
+    })
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
   // Toggle Reminder
 
-  const toggleReminder = (id) => {
+  const toggleReminder = async (id) => {
+    const taskToToggle = await fetchTask(id)
+    const updatedTask = { ...taskToToggle, reminder: !taskToToggle.reminder }
+    
+    const res = await fetch(`http://localhost:3001/tasks/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedTask)
+    })
+
+    const data = await res.json()
+
+    
     setTasks(
       tasks.map((task) =>
-        task.id === id ? { ...task, reminder: !task.reminder } : task
+        task.id === id ? { ...task, reminder: data.reminder } : task
       )
     );
   };
 
   return (
+    <Router>
     <div className=''>
-      <Header />
-      <AddTask onAdd={addTask} />
+      <Header
+        onAdd={() => setShowAddTask(!showAddTask)}
+        showAdd={showAddTask}
+      />
+      {showAddTask && <AddTask onAdd={addTask} />}
       <div className='tasks-container'>
         {tasks.length > 0 ? (
           <Tasks
@@ -67,8 +111,10 @@ const App = () => {
         ) : (
           "You currently have no tasks left. Great job!"
         )}
+        <Footer/>
       </div>
     </div>
+    </Router>
   );
 };
 
