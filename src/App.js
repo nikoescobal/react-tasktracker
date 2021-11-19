@@ -30,6 +30,14 @@ const App = () => {
     },
   ]);
 
+  //  Add Task
+  const addTask = (task) => {
+    const id = Math.floor(Math.random() * 10000 + 1);
+    console.log(id);
+    const newTask = { id, ...task };
+    setTasks([...tasks, newTask]);
+  };
+
   // Delete Task
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
@@ -48,7 +56,7 @@ const App = () => {
   return (
     <div className=''>
       <Header />
-      <AddTask />
+      <AddTask onAdd={addTask} />
       <div className='tasks-container'>
         {tasks.length > 0 ? (
           <Tasks

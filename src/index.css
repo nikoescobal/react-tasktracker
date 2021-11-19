@@ -30,7 +30,7 @@
 }
 
 .btn-submit {
-  @apply px-6 py-3 rounded font-raleway bg-blue-800 text-white shadow;
+  @apply w-full py-3 cursor-pointer rounded font-raleway bg-blue-700 text-white shadow;
 }
 
 .input {
@@ -58,9 +58,17 @@
 }
 
 .label {
-  @apply text-2xl py-3 font-semibold text-white block;
+  @apply text-lg p-2 font-semibold items-start text-white block;
+}
+
+checkbox {
+  @apply p-5;
 }
 
 .form-control {
-  @apply bg-green-400 rounded w-full mb-6 p-6;
+  @apply flex flex-col align-middle items-center bg-green-400 rounded w-full mb-6 p-5;
+}
+
+.label-container {
+  @apply flex justify-between align-middle items-center text-purple-600;
 }
